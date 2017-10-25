@@ -1,0 +1,89 @@
+@import 'confi.scss';
+@import 'forms.scss';
+
+
+.popup-shade{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index:99;
+    background:rgba(0,0,0,0.6);
+}
+
+.popup{
+    z-index: 999;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: px2rem(26px);
+    color: #333333;  
+    &.address{
+        height: auto;
+        bottom: 0;
+    }  
+    .pay-title{
+        height: px2rem(100px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .popup-pay{
+        background: #fff;
+        width: px2rem(695px);
+        border-radius: px2rem(5px);
+        .popup-paycontent{
+            display: flex;
+            justify-content: space-between;
+            min-height: px2rem(140px);
+            .pay-item{
+                flex: 0 0 33.33%;
+                text-align: center;
+            }
+        }
+    }
+    .active{
+        color: #09bb07;
+    }
+    .popup-foot{
+        display: flex;
+        justify-content: space-between;     
+        height: px2rem(100px);
+        align-items: center;
+        border-top:1px solid #dddddd; 
+        .cancel{
+            color: #dddddd;
+            border-right:1px solid  #dddddd; 
+        }   
+        .cancel,
+        .ok{
+            flex: 0 0 50%;
+            text-align:center;
+        }
+    }
+    .text-center{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }    
+}
+
+.popup-address{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+
+    .submit{
+        width: 100%;
+        background: #32cdcd;
+        color: #fff;
+        font-size: px2rem(36px);
+        padding: px2rem(33px) 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}

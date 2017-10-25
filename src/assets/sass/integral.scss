@@ -1,0 +1,31 @@
+@import 'confi.scss';
+
+.integral{
+    background: #fff;
+    padding:0 px2rem(12px);
+    .integral-item{
+        padding:px2rem(18px) 0;
+        background: #fff;
+        border-bottom:px2rem(1px) solid #dddddd;
+        &:last-child{
+            border-bottom:0;
+        }
+        .title{
+            display: flex;
+            justify-content: space-between;
+            .name{
+                font-size: px2rem(26px);
+                color: #666666;
+            }
+            .num{
+                color:#e3393c;
+                font-size: px2rem(22px);
+            }
+        }
+        .time{
+            margin-top: px2rem(14px);
+            font-size: px2rem(22px);
+            color: #dddddd;
+        }
+    }
+}

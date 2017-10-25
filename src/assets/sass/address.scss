@@ -1,0 +1,42 @@
+@import 'confi.scss';
+
+.address-head{
+    font-size: px2rem(26px);
+    color: #666;
+    padding: px2rem(32px) px2rem(12px);
+    background: #fff;
+    text-align: right;
+
+}
+
+.address-item{
+    font-size: px2rem(26px);
+    color: #333333;
+    margin-top: px2rem(12px);
+    background: #fff;
+    .head{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: px2rem(27px) px2rem(12px);
+    }
+    .content{
+        padding:0  px2rem(12px) px2rem(27px) px2rem(12px);
+    }
+    .foont{
+         align-items: center;
+         display: flex;
+         justify-content: flex-end;
+         border-top:px2rem(1px) solid #dddddd; 
+         padding: px2rem(25px) px2rem(12px);
+        i{
+            font-size: px2rem(26px);
+        }
+        .active{
+            color: #e3393c;
+        }
+        .label{
+            margin:0 px2rem(38px);
+        }
+    }
+}

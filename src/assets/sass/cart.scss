@@ -1,0 +1,31 @@
+@import 'confi.scss';
+
+
+.cart{
+    position:fixed;
+    bottom: px2rem(150px);
+    right: px2rem(50px);
+    .cart-number{
+        position: absolute;
+        top: px2rem(-20px);
+        left:px2rem(-20px);
+        height: px2rem(30);
+        min-width: px2rem(30);
+        background: #e3393c;
+        color: #fff;
+        border-radius: 50%;
+        padding: px2rem(10px);
+        font-size: 14px;
+    }
+}
+.cart-icon{
+    width: px2rem(80px);
+    height: px2rem(80px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #32cdcd;
+    color: #fff;
+    font-size: px2rem(30px);
+    border-radius: 50%;
+}

@@ -1,0 +1,41 @@
+@import 'confi.scss';
+
+
+.order-head{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: px2rem(35px) px2rem(12px);
+    font-size: px2rem(26px);
+    background:#fff;
+    .text-success{
+            color: #09bb07;
+        }
+    .text-warning{
+        color:#c22223;
+    }
+    .text-blue{
+        color:#32cdcd;
+    }
+}
+
+.order-content{
+    margin-top:px2rem(24px);
+    &:first-child{
+        margin-top:0;
+    }
+}
+.order-content .cartlist-foot{
+    background: #fff; 
+    border-top:px2rem(1px) solid #ddd; 
+}
+.mint-navbar{
+    .mint-tab-item.is-selected{
+        color: #c22223;
+        border-bottom:px2rem(5px) solid #c22223; 
+        margin-bottom: 0;
+        .mint-tab-item-label{
+             font-size: px2rem(26px);
+        }
+    }
+}

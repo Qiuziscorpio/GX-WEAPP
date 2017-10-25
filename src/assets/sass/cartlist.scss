@@ -1,0 +1,106 @@
+@import 'confi.scss';
+
+
+.cartlist{
+    .cartlist-head{
+        background: #fff;
+        display: flex;
+        justify-content: flex-end;
+        padding: px2rem(40px);
+        font-size: px2rem(26px);
+        color: #666666;
+    }
+    .deletecartico{
+       display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .cartlist-item{
+        display: flex;
+        margin-top: px2rem(12px);
+        padding: px2rem(12px);
+        background: #fff;
+        .img{
+           width: px2rem(185px);
+           height: px2rem(185px);
+           margin-right: px2rem(12px);
+           img{
+                width: px2rem(185px);
+                height: px2rem(185px);               
+           } 
+        }
+        .content{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            flex: 1;
+            font-size: px2rem(26px);
+            .title{
+                color: #333333;
+            }
+            .price{
+                color: #e3393c;
+            }
+            .norms{
+                font-size: px2rem(22px);
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                color: #666666;
+                .numhandle{
+                    display: flex;
+                    align-items: center;
+                    font-size: px2rem(38px);
+                }
+                .num{
+                    font-size: px2rem(22px);
+                    margin: 0 px2rem(20px);
+                }
+            }
+            
+        }
+    }
+}
+
+.cartlist-cost{
+    padding:0 px2rem(12px) ;
+    .cost-item{
+        padding: px2rem(40px) 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: #666666;
+        font-size: px2rem(26px); 
+        border-top:1px solid #dddddd; 
+        &:last-child{
+            border-bottom:1px solid #dddddd; 
+        }
+    }
+}
+
+.cartlist-foot{
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+    .label{
+        padding: 0 px2rem(20px);
+        .title{
+            font-size: px2rem(26px);
+            color: #666;
+        }
+        .price{
+            font-size: px2rem(36px);
+            color: #e43e3a;
+        }
+    } 
+    .pay-btn{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: px2rem(250px);
+        height: px2rem(98px);
+        background: #09bb07;
+        color: #fff;
+        font-size: px2rem(36px);
+    }
+}

@@ -1,0 +1,37 @@
+@import 'confi.scss';
+
+::-moz-placeholder{
+    color: #eee;
+    font-size: px2rem(24px);
+}
+::-webkit-input-placeholder{
+    color: #eee;
+    font-size: px2rem(24px);
+}
+
+.search{
+    
+    background: #f4f4f4;
+    color: #eee;
+    padding: px2rem(15px) !important;
+    .search-content{
+        display: flex;
+        border-radius: px2rem(5px);
+        padding: px2rem(15px);
+        align-items: center;        
+        background:#fff;
+        .search-input{
+            color: #555;
+            font-size: px2rem(24px);
+            border: 0;
+            background:#fff;
+            border-left:1px solid #eee;
+            padding: 0 px2rem(20px) ;
+            width: 100%;
+        }
+        .iconfont{
+            margin-right: px2rem(15px);
+
+        }
+    }
+}

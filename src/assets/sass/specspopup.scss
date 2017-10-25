@@ -1,0 +1,127 @@
+@import 'confi.scss';
+
+
+.specspopup{
+    box-shadow:1px 0px 16px #000; 
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+    background: #fff;
+    z-index:99;
+}
+.specspopup-head{
+    padding: px2rem(15px);
+    display: flex;
+    font-size: px2rem(26px);
+    position: relative;
+    .img{
+        flex: 0 0 px2rem(143px);
+        img {
+            width: px2rem(143px);
+            height: px2rem(143px);
+        }
+    }
+    .content{
+        flex: 1;
+        padding: px2rem(20px);
+        .price{
+            color:#e3393c;
+        }
+        .name{
+            color: #333333;
+        }
+    }
+    .closebtn{
+        position: absolute;
+        right: px2rem(12px);
+        top: px2rem(12px);
+        i{
+            font-size: px2rem(40px);
+        }
+    }
+}
+
+.specspopup-content{
+    .numinput{
+        text-align: center;
+        width: px2rem(80px);
+    }
+    ::-moz-placeholder{
+        text-align: center;
+    }
+    ::-webkit-input-placeholder{
+        text-align: center;
+    }    
+    .content-item{
+        padding: px2rem(26px) px2rem(12px); 
+        border-top:px2rem(1px) #dddddd solid; 
+        .title{
+            font-size: px2rem(26px);
+            color: #333;
+        }
+        .specs{
+            display: flex;
+            flex-wrap:wrap;
+            margin-top: px2rem(26px);
+            .specs-item{
+                padding:0 px2rem(45px);
+                margin-top: px2rem(8px);
+                height: px2rem(56px);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: px2rem(6px);
+                border: px2rem(1px) #dddddd solid;
+                margin-right: px2rem(12px);
+                font-size: px2rem(24px);
+                cursor: pointer;
+                &.active{
+                    background: #e3393c;
+                    color: #fff;
+                }
+            }
+        }
+    }
+
+    .content-amountitem{
+        display: flex;
+        align-items: center;
+        height: px2rem(154px);
+        padding: 0 px2rem(12px);
+        border-top:px2rem(1px) #dddddd solid; 
+        justify-content: space-between;
+        .specs-item{
+            width: px2rem(100px);
+            display: inline-block;
+            text-align: center;
+        }
+    }
+
+}
+
+.specspopup-foot{
+    display: flex;
+    justify-content: space-between;
+    .addbtn{
+        font-size:px2rem( 36px);
+        color:#fff;
+        background: #32cdcd;
+        padding: px2rem(32px); 
+        display: flex;
+        flex: 1;
+        justify-content: center;
+        align-items: center;
+    }
+    .paybtn{
+        font-size:px2rem( 36px);
+        color:#fff;
+        background: #e3393c;
+        display: flex;
+        flex: 1;
+        justify-content: center;
+        align-items: center;   
+        padding: px2rem(32px);    
+    }    
+}
+

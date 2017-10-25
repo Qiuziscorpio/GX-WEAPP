@@ -1,0 +1,303 @@
+//初始配置
+
+html,body,div,img,p,ul,li,img {
+    margin: 0;
+    padding: 0;
+}
+html ,body,#app{
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    font-family: "Arial","Microsoft YaHei","黑体","宋体",sans-serif;
+    min-width: 320px;
+    height: 100%;
+}
+ul li{
+    list-style-type: none;
+}
+a{
+    text-decoration:none;
+    color: #565656
+}
+
+
+
+$theme:#565656;
+$grey1:#8c8c8c;
+$grey2:#f4f4f4;
+$yellow:#ffb71b;
+$blue:#0ac7fd;
+$green:#74ce3b;
+$rose:#e4195b;
+
+
+
+// 混合
+@mixin  fc($size,$color) {
+    font-size:px2rem($size);
+    color:$color;
+}
+@mixin whradius($radius:50%,$width:15vw,$height:15vw){
+    border-radius: $radius;
+    width:$width;
+    height:$height;
+    text-align: center;
+}
+@mixin position($position,$right,$bottom,$index){
+    position:$position;
+    right:$right;
+    bottom:$bottom;;
+    z-index: $index;
+}
+@mixin before-after(){
+    width: 100%;
+    content:"";
+    position: absolute;
+    left:0;
+    -webkit-transform:scaleY(.5);
+    -webkit-transform-origin:0 0;  
+}
+@mixin border-after(){
+     &:after{
+        @include before-after();
+        top:0;      
+        border-top:px2rem(1px) solid #efefef;
+    }   
+}
+@mixin border-before(){
+     &:before{
+        @include before-after();
+        bottom:0;        
+        border-bottom:px2rem(1px) solid #efefef;
+    }   
+}
+@mixin boxsizing(){
+    box-sizing: border-box;
+    -moz-box-sizing: border-box; 
+    -webkit-box-sizing: border-box;   
+}
+
+@mixin lineclamp(){
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+//px转换rem
+@function px2rem($px) {
+    $rem: 32px;
+    @return ($px/$rem) +rem;
+}
+ 
+
+
+//网格布局
+.flex-row{
+    display: -webkit-flex;
+    display: flex;
+    &.xs{
+        margin:0  px2rem(11px);
+        flex-wrap: wrap;
+    }
+}
+.flex-grid{
+    flex:1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    &.flex-grid3{
+        flex:0 0 33.333%;
+        -webkit-flex:0 0 33.333%;
+        -ms-flex: 0 0 33.333%;      
+    }
+}
+
+.flex-grid{
+    flex:1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    &.flex-grid2{
+        flex:0 0 50%;
+        -webkit-flex:0 0 50%;
+        -ms-flex: 0 0 50%;     
+    }
+}
+
+
+
+.flex-vertical{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    .flex-vertical-content{
+        flex: 1;
+        overflow: scroll;
+    }
+}
+.verticalheight{
+    height:100vh;
+    background: #f4f4f4;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box; 
+    -webkit-box-sizing: border-box;    
+    padding-top:1px;
+}
+
+.show{
+    display: block;
+}
+.hide{
+    display: none;
+}
+
+//颜色
+.bg-yellow{
+    background:$yellow;
+}
+.bg-blue{
+    background:$blue;
+}
+.bg-green{
+     background:$green;
+}
+.bg-rose{
+    background: $rose;
+}
+.bg-grey1{
+    background: $grey1;
+}
+.bg-grey2{
+    background: $grey2;
+}
+
+.text-yellow{
+    color:$yellow;
+}
+.text-blue{
+    color:$blue;
+}
+.text-green{
+    color:$green;
+}
+.text-rose{
+    color: $rose;
+}
+.text-grey1{
+    color: $grey1;
+}
+.text-center{
+    text-align: center;
+}
+
+//分页
+.mint-loadmore {
+    overflow: hidden
+}
+.mint-loadmore-content.is-dropped {
+    -webkit-transition: .2s;
+    transition: .2s
+}
+.mint-loadmore-top, .mint-loadmore-bottom {
+    text-align: center;
+    height: 50px;
+    line-height: 50px
+}
+.mint-loadmore-top {
+    margin-top: -50px
+}
+.mint-loadmore-bottom {
+    margin-bottom: -50px
+}
+.mint-loadmore-spinner {
+    display: inline-block;
+    margin-right: 5px;
+    vertical-align: middle
+}
+.mint-loadmore-text {
+    vertical-align: middle
+}
+
+.page-loadmore .mint-spinner {
+    display: inline-block;
+    vertical-align: middle;
+}
+.page-loadmore-desc {
+    text-align: center;
+    color: #666;
+    padding-bottom: 5px;
+}
+.page-loadmore-desc:last-of-type {
+    border-bottom: solid 1px #eee;
+}
+.page-loadmore-listitem {
+    height: 50px;
+    line-height: 50px;
+    border-bottom: solid 1px #eee;
+    text-align: center;
+}
+.page-loadmore-listitem:first-child {
+    border-top: solid 1px #eee;
+}
+.page-loadmore-wrapper {
+    overflow: scroll;
+}
+.mint-loadmore-bottom span {
+    display: inline-block;
+    -webkit-transition: .2s linear;
+    transition: .2s linear;
+    vertical-align: middle
+}
+.mint-loadmore-bottom span.is-rotate {
+    -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+}
+.mint-spinner-snake {
+  -webkit-animation: mint-spinner-rotate 0.8s infinite linear;
+          animation: mint-spinner-rotate 0.8s infinite linear;
+  border: 4px solid transparent;
+  border-radius: 50%;
+}
+@-webkit-keyframes mint-spinner-rotate {
+0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+}
+100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+}
+}
+@keyframes mint-spinner-rotate {
+0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+}
+100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+}
+}
+
+.radius{
+@include position(fixed,px2rem(18px),px2rem(18px),999);
+.radius-icon{
+    line-height:px2rem(96px);
+    @include whradius(50%,px2rem(90px),px2rem(90px));
+    i{
+    @include fc(56px,#fff)
+    }
+}
+}
+
+.mint-radio-core::after{
+    top: 6px;
+    left: 6px;
+}
+
+.joinbtn{
+    padding: px2rem(30px);
+    text-align: center;
+    @include fc(40px,$yellow);
+    position: relative;
+    @include border-after(); 
+}

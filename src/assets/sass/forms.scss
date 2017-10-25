@@ -1,0 +1,47 @@
+@import 'confi.scss';
+
+.bg-grey2{
+    height: 100vh;
+}
+
+.form {
+    padding:0 px2rem(12px);
+    background: #fff;
+    .forminput-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size:px2rem(26px);
+        
+        color:#666666;
+        border-bottom:px2rem(1px) #dddddd solid;
+        .label{
+            flex:0 0 px2rem(132px);
+        }
+        .input{
+            flex:1;
+            border: 0;
+            box-shadow: 0;
+            min-height: px2rem(93px);
+        }
+        &:last-child{
+            border-bottom:0;
+        }
+    }    
+}
+
+.submit{
+    padding: px2rem(30px);
+    color: #fff;
+    font-size: px2rem(36px);
+    background: #32cdcd;
+    background: #32cdcd;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    border: 0;
+    border-radius:px2rem(5px);
+}
+.user-btn{
+    padding: px2rem(12px)
+}

@@ -1,0 +1,87 @@
+@import 'confi.scss';
+
+.commodity{
+    flex-wrap: wrap;
+    .commodity-item{
+        font-size: px2rem(22px);
+        margin-top: px2rem(12px);
+        @include boxsizing();
+        .commodity-img{
+            img{
+                width: 100%;
+                display: block;
+            }
+        }
+        .commodity-content{
+             background: #fff;
+             .commodity-title{
+                 padding: px2rem(12px);
+                 color: #333333;
+             }
+             .commodity-specs{
+                 padding: px2rem(12px);
+                 display: flex;
+                 justify-content:space-between;
+                 align-items: center;
+                 .price{
+                     .rmb{
+                         font-size: px2rem(16px)
+                     }
+                     color: #e3393c;
+                 }
+                 .cart-btn{
+                    cursor: pointer;
+                    font-size: px2rem(20px);
+                    padding: px2rem(10px) px2rem(22px);
+                    color: #fff;
+                    border-radius: px2rem(50px);
+                    background: -webkit-linear-gradient(#e3393c, #ffbc06);
+                    background: -moz-linear-gradient(#e3393c, #ffbc06);
+                    background: -o-linear-gradient(#e3393c, #ffbc06);
+                    background: linear-gradient(#e3393c, #ffbc06);
+                                  }
+             }
+        }
+
+        &:nth-of-type(odd){
+            padding-right: px2rem(6px)
+        }
+        &:nth-of-type(even){
+            padding-left: px2rem(6px)
+        }                
+    }
+}
+.label-title{
+    text-align: center;
+    padding: px2rem(15px);
+    background:#fff;
+    font-size: px2rem(24px);
+    border-top: px2rem(6px) solid #e3393c; 
+    color: #e3393c;
+    .label{
+        margin: 0 px2rem(10px);
+        
+    }
+}
+
+.goods-commodity {
+    .commodity-item {
+        background:#fff;
+        display: flex;
+        .commodity-img{
+            flex: 0 0 px2rem(185px);
+        }
+        &:nth-of-type(odd) {
+            padding-right:0;
+        }    
+        &:nth-of-type(even){
+            padding-left:0;
+        }
+        .commodity-content{
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content:space-between;
+        }
+    }
+}

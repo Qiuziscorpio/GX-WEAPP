@@ -1,0 +1,96 @@
+@import 'confi.scss';
+
+.vip-head{
+    font-size: px2rem(26px);
+    .vip-card{
+        position: relative;
+        img{
+            display: block;
+            width: 100%;
+        }
+        .vipnum{
+            position: absolute;
+            bottom: px2rem(20px);
+            right: px2rem(20px);
+            font-size:px2rem(35px);
+            color: #ddc258;
+            text-shadow:0px 1px 3px #000;
+        }
+    }
+    .vip-nav{
+        display:flex;
+        padding:px2rem(24px) 0;
+        border-bottom:px2rem(1px) solid #dddddd; 
+        border-top:px2rem(1px) solid #dddddd; 
+        background: #fff;
+        .nav-item{
+            flex: 1;
+             display: flex;
+             align-items: center;
+             justify-content: center;
+             padding:px2rem(25px) 0;
+             justify-content: center;
+             border-right:px2rem(1px) solid #dddddd; 
+             color:#666666;
+             &:last-child {
+                 border: 0;
+             }
+             .iconimg{
+                 position: relative;
+                 margin-bottom: px2rem(23px);
+                 .num{
+                     width: px2rem(45px);
+                     height: px2rem(45px);
+                     display: flex;
+                     align-items: center;
+                     justify-content: center;
+                     background: #e3393c;
+                     color: #fff;
+                     border-radius:50%; 
+                     right: px2rem(-30px);
+                     top: px2rem(-20px);
+                     position: absolute;
+                     
+                 }
+             }
+             .iconimg1{
+                 width: px2rem(49px);
+                 height: px2rem(37px);
+                 background: url(../assets/iconimg/icon2.png);
+                 background-size: 100%;
+             }
+             .iconimg2{
+                 width: px2rem(42px);
+                 height: px2rem(42px);
+                 background: url(../assets/iconimg/icon3.png);
+                 background-size: 100%;
+             }
+             .iconimg3{
+                 width: px2rem(34px);
+                 height: px2rem(37px);
+                 background: url(../assets/iconimg/icon1.png);
+                 background-size: 100%;
+             }                          
+        }
+      
+    }  
+    margin-bottom: px2rem(24px);
+}
+
+.vip-content{
+    padding: 0 px2rem(12px);
+    color:#666;
+    background: #fff;
+}
+.vip-item{
+   padding:px2rem(33px) 0;
+   display: flex;
+   font-size: px2rem(26px);
+   justify-content: space-between;
+   border-bottom:px2rem(1px) solid #dddddd;
+  
+   &:last-child {
+        border: 0;
+    }
+}
+
