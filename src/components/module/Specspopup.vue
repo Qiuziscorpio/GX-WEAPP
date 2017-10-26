@@ -18,7 +18,7 @@
                     颜色
                 </div>
                 <div class="specs">
-                    <span class="specs-item" :class="{'active':data.checkbox}" v-for="(data,index) in specspopupdata.colors" :key="data" v-on:click="selectColors(index,data.checkbox)">
+                    <span class="specs-item" :class="{'active':data.checkbox}" v-for="(data,index) in specspopupdata.colors" key="d" v-on:click="selectColors(index,data.checkbox)">
                     {{data.colorName}}
                     </span>                  
                 </div>
@@ -28,7 +28,7 @@
                     版本
                 </div>
                 <div class="specs">
-                    <span class="specs-item" :class="{'active':data.checkbox}" v-for="(data,index) in specspopupdata.versions" :key="data" v-on:click="selectVersions(index,data.checkbox)" >
+                    <span class="specs-item" :class="{'active':data.checkbox}" v-for="(data,index) in specspopupdata.versions" key="d" v-on:click="selectVersions(index,data.checkbox)" >
                     {{data.versionName}}
                     </span>                  
                 </div>

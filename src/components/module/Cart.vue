@@ -1,6 +1,6 @@
 <template>
     <div> 
-        <router-link :to="{name:'cartList'}" tag="div" class="cart">
+        <router-link :to="{name:'cartList',params:{id:'0'}}" tag="div" class="cart">
             <span class="cart-number">
                {{number}}
             </span> 
@@ -15,18 +15,22 @@
     export default {
         name:'cart',
         props:{
-            
+            number: 0
         },
         components:{
         },
+        watch: {
+            'number':function() {
+                this.number = this.number
+            }
+        },
         data() {
             return {
-                number:''
             }
         },
         mounted(){
             let self = this
-             self.number= localStorage.getItem('cartnumber')
+            // self.number= localStorage.getItem('cartnumber')
         }
     }
 </script>

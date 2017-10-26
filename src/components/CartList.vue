@@ -5,11 +5,14 @@
         <div class="flex-vertical">  
                 <div class="flex-vertical-content bg-grey2">
                     <div class="cartlist">
+                        <router-link :to="{name:'address'}" class="cartlist-head mint-field-state is-error"  v-if="isAddress"> 
+                            请先填写收货地址哦~
+                        </router-link>                    
                         <div class="cartlist-head" v-on:click="isdeletecart"> 
                             编辑删除
                         </div>
                         <div>
-                            <div class="cartlist-item" v-for="data in carlistdata">
+                            <div class="cartlist-item" v-for="data in carlistdata.products">
                                 <div class="deletecartico" v-if="isdeleticon" v-on:click="deletecart(data.productId)">
                                     <i class="icon iconfont icon-guanbi"></i>
                                 </div>
@@ -40,7 +43,7 @@
                                     快递费用
                                 </div>
                                 <div>
-                                    ¥ 0
+                                    ¥ 8
                                 </div>
                             </div>
                             <div class="cost-item">
@@ -66,15 +69,18 @@
                     <div class="label">
                         <span class="title">支付金额：</span>
                         <span class="price">
-                            ¥ 2135
+                            ¥ {{carlistdata.totalPrice}}
                         </span>
                     </div>
-                    <div class="pay-btn" v-on:click="paySelect"> 
+                    <div class="pay-btn" v-if="isAddress" style="background: #ccc;"> 
                         支付
                     </div>
+                    <div class="pay-btn" v-on:click="paySelect" v-else> 
+                        支付
+                    </div>                    
                 </div>
             </div>
-        </div>
+        </div>         
     </div>
 
 </template>
@@ -82,6 +88,8 @@
 <script>
 
     import Vtemplate from './module/Template.vue'
+    import common from '../common'
+
     export default {
         name:'cartlist',
         components:{
@@ -93,7 +101,8 @@
                 isdeleticon:false,
                 ispopup:false,
                 popuptype:"支付方式",
-                carlistdata:''
+                carlistdata:'',
+                isAddress: false
             }
         },
         components:{
@@ -103,13 +112,12 @@
             //选择支付方式
             paySelect:function(){
                 let self=this
-                self.ispopup=!self.ispopup
-                // self.$http.post(`${self.api}/car/payOrder/pay.do?orderId=1234564852&txnAmt=36`).then((response) => {
-                //     console.log(response, 'response')
-                // })
+                self.ispopup=!self.ispopup                
+                self.$http.post(`${self.api}/car/payOrder/pay.do?orderId=${this.carlistdata.date.orderId}&txnAmt=36`).then((response) => {
+                    console.log(response, 'response')
+                })
             },
             isdeletecart:function(){
-                console.log('oo')
                 self.isdeleticon=true
             },
             deletecart:function(id){
@@ -127,7 +135,6 @@
             subtractNum:function(id){   
               let self=this             
                 self.carlistdata.map(function(v,i){
-                    console.log(v.count,'subtractNumcount')
                     if(v.count==1){
                         return false;
                     }
@@ -142,28 +149,40 @@
                 })
             },
             loadData:function(self){
-                // self.$http.post(self.api+'car/list.do?userId='+self.userId).then((response) => {
-                //     console.log('请求成功')
-                //     console.log(response.data.data,'response')
-                //     self.carlistdata=response.data.data
-                // }),(response)=>{
-                //     console.log('请求出错')
-                // }
-
-                self.$http.post(`${self.api}myOrder/OrderInfo.do?userId=${self.userId}&orderId=${this.id}`).then((response) => {
-                    console.log('请求成功')
-                    console.log(response.data.data,'response')
-                   // self.carlistdata=response.data.data
-                }),(response)=>{
-                    console.log('请求出错')
-                }    
-
+                if(this.id === '0'){
+                    self.$http.post(self.api+'car/list.do?userId='+self.userId).then((response) => {
+                        self.carlistdata=response.data
+                        self.carlistdata.products.map(res => {
+                            res.price =  common.shiftMoney( res.price)
+                        })
+                        self.carlistdata.totalPrice = common.shiftMoney(self.carlistdata.totalPrice)+8
+                    }),(response)=>{
+                        console.log('请求出错')
+                    }
+                }else {
+                    self.$http.post(`${self.api}order/orderInfo.do?userId=${self.userId}&orderId=${this.id}`).then((response) => {
+                        self.carlistdata=response.data
+                        self.carlistdata.products.map(res => {
+                            res.price =  common.shiftMoney( res.price)
+                        })                        
+                        self.carlistdata.totalPrice = common.shiftMoney(self.carlistdata.totalPrice)+8
+                    }),(response)=>{
+                        console.log('请求出错')
+                    }
+                }
             }
         },
         mounted(){
-            let self=this
+            let self = this
             this.id = this.$route.params.id
             self.loadData(self)
+            self.$http.get(self.api + 'address/myAddress.do?userId='+self.userId).then((response) => {
+                if(response.data.address.length === 0) {
+                    self.isAddress = true
+                }
+            }),(response)=>{
+                console.log('请求出错')
+            }            
         }       
     }
 </script>

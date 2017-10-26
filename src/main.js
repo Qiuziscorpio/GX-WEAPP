@@ -16,7 +16,6 @@ Vue.config.productionTip = false
 Vue.prototype.api="http://183.62.252.130:801/"
 //数据接口
 Vue.prototype.api2="http://183.62.252.130:801"
-
 //用户id
 Vue.prototype.userId=1
 

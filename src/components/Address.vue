@@ -46,7 +46,6 @@
         },
         methods:{
             addAddress:function(){
-                console.log( '新增地址')
                 this.ispopup=!this.ispopup
             },
             setDefaultAddress:function(val,type){
@@ -120,11 +119,7 @@
             },
             loadData:function(self,pages){
                 self.$http.get(self.api + 'address/myAddress.do?userId='+self.userId).then((response) => {
-                    console.log('请求成功')
-                   // self.listdata=response.data.data
-                   self.myaddresslistdata = response.data.address
-                   console.log( response.data.address)
-                  
+                   self.myaddresslistdata = response.data.address                  
                 }),(response)=>{
                     console.log('请求出错')
                 }

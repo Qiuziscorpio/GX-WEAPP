@@ -111,22 +111,14 @@
         methods:{
             cancelHandle:function(){
                 //取消
-                console.log('取消遮罩层')
                 this.$emit('ispopup',false)
             },
             okHandle:function(){
                 //确定
-                console.log('确定选择支付方式')
                 this.$emit('ispopup',false)
             },
             getAddress:function(){
                 let self =this
-                // if(self.goodsName==''&&self.phone==''&&self.street==''&&self.address==''){
-
-                // }else{
-
-                // }
-                console.log('oooo')
                 if(self.addressArr.goodsName==''){
                     Toast({
                         message: '收货人必填',

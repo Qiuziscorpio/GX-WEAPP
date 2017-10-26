@@ -7,7 +7,7 @@
         <!-- 商品列表 -->
         <Vcommodity :commoditydata="listdata" v-on:addCart="addCart"></Vcommodity>
         <!-- 购物车 -->
-        <Vcart></Vcart>    
+        <Vcart :number="number"></Vcart>    
         <!-- 选择规格  -->
         <Vspecspopup v-if="showpecspopup" :specspopupdata="cartdetails" v-on:isspecspopup="isspecspopup"></Vspecspopup>
     </div>
@@ -89,7 +89,8 @@
                     {
                         img:img
                     }                                        
-                ]
+                ],
+                number:0
             }
         },
         methods:{
@@ -107,6 +108,7 @@
                         self.$set(v,'checkbox',false)
                      })
                      self.showpecspopup=true
+                     localStorage.setItem("CartCount", ++self.number)
                  }),(response)=>{
                      console.log('请求出错')
                  }
@@ -134,6 +136,7 @@
             let self=this
             self.loadData(self)
             self.loadCartData(self)
+            self.number =  localStorage.getItem("CartCount")
         }
     }
 </script>

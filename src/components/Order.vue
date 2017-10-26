@@ -52,7 +52,7 @@
                             <div class="label" v-if="data.stauts==0" v-on:click="cancelOrder(data.orderId)">
                                 <span class="title">取消订单</span> 
                             </div> 
-                            <router-link :to="{name:'cartList'}" class="pay-btn" v-if="data.stauts==0" > 支付</router-link>
+                            <router-link :to="{name:'cartList',params:{id:data.orderId}}" class="pay-btn" v-if="data.stauts==0" > 支付</router-link>
                         </div>                                           
                     </div>
                 </div>               
@@ -148,6 +148,7 @@
 
 <script>
    // import Vtemplate from './module/Template.vue'
+   import common from '../common'
     export default {
         name:'order',
         data() {
@@ -171,11 +172,14 @@
                 } 
                 if(val==3){
                     self.$http.get(self.api + 'order/list.do?userId='+self.userId+'&stauts='+1).then((response) => {
-
                         self.a1= response.data.data
-
                         self.$http.get(self.api + 'order/list.do?userId='+self.userId+'&stauts='+2).then((response2) => {
                             self.a2=response2.data.data
+                            sself.a2.map(res2 => {
+                                res2.products.map(res => {
+                                    res.price =  common.shiftMoney( res.price)
+                                })
+                            })
                             self.orderlistdata=self.a1.concat(self.a2);
                         }),(response)=>{
                             console.log('请求出错')
@@ -215,7 +219,11 @@
             loaData:function(self,stauts){
                 self.$http.get(self.api + 'order/list.do?userId='+self.userId+'&stauts='+stauts).then((response) => {
                     self.orderlistdata=response.data.data
-                    console.log( response.data.data)
+                    self.orderlistdata.map(res=> {
+                        res.products.map(res2 => {
+                            res2.price =  common.shiftMoney( res2.price)
+                        })
+                    })
                 }),(response)=>{
                     console.log('请求出错')
                 }                

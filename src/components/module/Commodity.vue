@@ -18,7 +18,7 @@
                             <div class="price">
                             <span class="rmb"> ¥ </span>  {{data.price/100}}
                             </div>
-                            <router-link :to="{name:'cartList'}" class="cart-btn">
+                            <router-link :to="{name:'cartList',params:{id:'0'}}" class="cart-btn">
                                 加入购物车
                             </router-link>                        
                         </div>
@@ -43,7 +43,7 @@
                             <div class="price">
                             <span class="rmb"> ¥ </span>  {{data.price/100}}
                             </div>
-                            <div :to="{name:'cartList'}" class="cart-btn" v-on:click="addCart(data.productId)">
+                            <div :to="{name:'cartList',params:{id:'0'}}" class="cart-btn" v-on:click="addCart(data.productId)">
                                 加入购物车
                             </div>                        
                         </div>
@@ -68,7 +68,7 @@
                             <div class="price">
                             <span class="rmb"> ¥ </span>  {{data.price/100}}
                             </div>
-                            <router-link :to="{name:'cartList'}" class="cart-btn">
+                            <router-link :to="{name:'cartList',params:{id:'0'}}" class="cart-btn">
                                 加入购物车
                             </router-link>                        
                         </div>
