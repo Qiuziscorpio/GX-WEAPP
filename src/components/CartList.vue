@@ -102,7 +102,8 @@
                 ispopup:false,
                 popuptype:"支付方式",
                 carlistdata:'',
-                isAddress: false
+                isAddress: false,
+                addressId: ''
             }
         },
         components:{
@@ -112,8 +113,10 @@
             //选择支付方式
             paySelect:function(){
                 let self=this
+                let products = this.carlistdata.products
+                products = JSON.stringify(products)
                 self.ispopup=!self.ispopup                
-                self.$http.post(`${self.api}/car/payOrder/pay.do?orderId=${this.carlistdata.date.orderId}&txnAmt=36`).then((response) => {
+                self.$http.post(`${self.api}payOrder/pay.do?orderId=${this.carlistdata.date.orderId}&addressId=${this.addressId}&products=${products}`).then((response) => {
                     console.log(response, 'response')
                 })
             },
@@ -179,6 +182,13 @@
             self.$http.get(self.api + 'address/myAddress.do?userId='+self.userId).then((response) => {
                 if(response.data.address.length === 0) {
                     self.isAddress = true
+                } else {
+                    response.data.address.map(res => {
+                        // 0 普通地址 1默认地址
+                        if(res.default_ === 1) {
+                            self.addressId = res.addressId
+                        }
+                    })
                 }
             }),(response)=>{
                 console.log('请求出错')
