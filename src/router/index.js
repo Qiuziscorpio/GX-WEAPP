@@ -12,8 +12,8 @@ import VipBooklet from '@/components/VipBooklet'
 import Address from '@/components/Address'
 import Integral from '@/components/Integral'
 import Privilege from '@/components/Privilege'
-
-
+import Login from '@/components/Login'
+import Sign from '@/components/Sign'
 
 Vue.use(Router)
 
@@ -104,8 +104,37 @@ const router = new Router({
       path:'/privilege',
       name:'privilege',
       component:Privilege
-    } 
+    },
+    // 登录
+    {
+      path:'/login',
+      name:'login',
+      component:Login
+    },
+    {
+      path:'/sign',
+      name:'sign',
+      component:Sign
+    }         
   ]
+})
+
+//全局监听路由 登录授权 
+router.beforeEach(({meta,path}, from, next) => {
+  var isLogin = Boolean(localStorage.getItem('userInfo'))
+	if (meta && !isLogin && path !== '/login' && path !== '/sign') {
+		next({ path: '/login' })
+	} else {
+		if (isLogin) {
+			if (path == '/login' || path == '/sign') {	
+				next({ path: '/' })
+			} else {
+        next()
+      }    
+    } else {
+      next()
+    }
+  }
 })
 
 export default router

@@ -17,7 +17,7 @@ Vue.prototype.api="http://183.62.252.130:801/"
 //数据接口
 Vue.prototype.api2="http://183.62.252.130:801"
 //用户id
-Vue.prototype.userId=1
+Vue.prototype.userId = localStorage.getItem('userInfo') ? JSON.parse(localStorage.getItem('userInfo')).userId : '' 
 
 /* eslint-disable no-new */
 new Vue({

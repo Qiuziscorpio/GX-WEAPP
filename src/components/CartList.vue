@@ -9,11 +9,12 @@
                             请先填写收货地址哦~
                         </router-link>                    
                         <div class="cartlist-head" v-on:click="isdeletecart"> 
-                            编辑删除
+                            <span v-if="isdeleticon"> 删除 </span>
+                            <span v-else>编辑</span>                           
                         </div>
                         <div>
                             <div class="cartlist-item" v-for="data in carlistdata.products">
-                                <div class="deletecartico" v-if="isdeleticon" v-on:click="deletecart(data.productId)">
+                                <div class="deletecartico" v-if="isdeleticon" v-on:click="deletecart(data.carId)">
                                     <i class="icon iconfont icon-guanbi"></i>
                                 </div>
                                 <div class="img">
@@ -29,9 +30,9 @@
                                             商品规格：{{data.versionName}}，{{data.colorName}}
                                         </div>
                                         <div class="numhandle">
-                                            <span v-on:click="subtractNum(data.productId )"> － </span>
+                                            <span v-on:click="subtractNum(data.carId )"> － </span>
                                             <span class="num"> {{data.count}} </span>
-                                            <span v-on:click="addNum(data.productId)"> ＋ </span> 
+                                            <span v-on:click="addNum(data.carId)"> ＋ </span> 
                                         </div>
                                     </div>
                                 </div>
@@ -89,6 +90,7 @@
 
     import Vtemplate from './module/Template.vue'
     import common from '../common'
+    import { Toast } from 'mint-ui';
 
     export default {
         name:'cartlist',
@@ -114,14 +116,14 @@
             paySelect:function(){
                 let self=this
                 let products = this.carlistdata.products
-                products = JSON.stringify(products)
+                products = JSON.stringify(products).replace(/\"/g,"'")
                 self.ispopup=!self.ispopup                
-                self.$http.post(`${self.api}payOrder/pay.do?orderId=${this.carlistdata.date.orderId}&addressId=${this.addressId}&products=${products}`).then((response) => {
+                self.$http.post(`${self.api}payOrder/pay.do?userId=${this.userId}&orderId=${this.carlistdata.date.orderId}&addressId=${this.addressId}&products=${products}`).then((response) => {
                     console.log(response, 'response')
                 })
             },
             isdeletecart:function(){
-                self.isdeleticon=true
+                this.isdeleticon= !this.isdeleticon
             },
             deletecart:function(id){
                 let self = this
@@ -136,19 +138,27 @@
                 }                
             },
             subtractNum:function(id){   
-              let self=this             
-                self.carlistdata.map(function(v,i){
-                    if(v.count==1){
-                        return false;
+              let self=this      
+              console.log(this.carlistdata, 'carlistdata')  
+                self.carlistdata.products.map(function(v,i){
+                    if(v.carId == id) {
+                        if(v.count==1){
+                            return false;
+                        }
+                        --v.count
+                        self.$http.post(`${self.api}car/addCount.do?userId=${self.userId}&carId=${id}&count=${v.count}`).then((response) => {
+                        })                                            
                     }
-                     --v.count
-                     return
                 })
             },
             addNum:function(id){
                 let self=this
-                self.carlistdata.map(function(v,i){
-                     ++v.count
+                self.carlistdata.products.map(function(v,i){
+                    if(v.carId == id) {
+                      ++v.count
+                      self.$http.post(`${self.api}car/addCount.do?userId=${self.userId}&carId=${id}&count=${v.count}`).then((response) => {
+                      })
+                    }
                 })
             },
             loadData:function(self){
@@ -158,7 +168,8 @@
                         self.carlistdata.products.map(res => {
                             res.price =  common.shiftMoney( res.price)
                         })
-                        self.carlistdata.totalPrice = common.shiftMoney(self.carlistdata.totalPrice)+8
+                        let money = common.shiftMoney(self.carlistdata.totalPrice + (8*100))
+                        self.carlistdata.totalPrice = money
                     }),(response)=>{
                         console.log('请求出错')
                     }
@@ -167,8 +178,9 @@
                         self.carlistdata=response.data
                         self.carlistdata.products.map(res => {
                             res.price =  common.shiftMoney( res.price)
-                        })                        
-                        self.carlistdata.totalPrice = common.shiftMoney(self.carlistdata.totalPrice)+8
+                        })             
+                        let money = common.shiftMoney(self.carlistdata.totalPrice + (8*100))
+                        self.carlistdata.totalPrice = money
                     }),(response)=>{
                         console.log('请求出错')
                     }

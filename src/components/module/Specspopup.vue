@@ -127,9 +127,11 @@
                      });  
                 }else{
                     let data={
+                        'carId' :self.specspopupdata.carId,
+                        'userId' : self.userId,
                         'productId':self.specspopupdata.productId,
-                        'version_id':self.version_id,
-                        'color_id':self.colors_id,
+                        'versionId':self.version_id,
+                        'colorId':self.colors_id,
                         'price':self.specspopupdata.price,
                         'count':self.num
                     }
@@ -166,9 +168,11 @@
                      });  
                 }else{
                     let data={
+                        'carId' :self.specspopupdata.carId,
+                        'userId' : self.userId,
                         'productId':self.specspopupdata.productId,
-                        'version_id':self.version_id,
-                        'color_id':self.colors_id,
+                        'versionId':self.version_id,
+                        'colorId':self.colors_id,
                         'price':self.specspopupdata.price,
                         'count':self.num
                     }
