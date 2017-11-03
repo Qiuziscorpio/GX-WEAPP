@@ -115,11 +115,10 @@
             //选择支付方式
             paySelect:function(){
                 let self=this
-                let products = this.carlistdata.products
-                products = JSON.stringify(products).replace(/\"/g,"'")
+                var products = JSON.stringify(this.carlistdata.products).replace(/\"/g,"'")
+                console.log(products, 'products')
                 self.ispopup=!self.ispopup                
-                self.$http.post(`${self.api}payOrder/pay.do?userId=${this.userId}&orderId=${this.carlistdata.date.orderId}&addressId=${this.addressId}&products=${products}`).then((response) => {
-                    console.log(response, 'response')
+                self.$http.post(`${self.api}payOrder/pay.do?userId=${this.userId}&orderId=${this.carlistdata.date.orderId}&addressId=${this.addressId}&products={'colorId':1,'colorName':'金色','count':2,'orderCode':'20171101100356','orderId':5,'page':1,'poId':5,'price':'12.31','productId':7,'productName':'小米 红米4A 2+16G 全网通','productPic':'/upload/cover/1491896616092.png','rows':30,'versionName':'3G版本'}`).then((response) => {
                 })
             },
             isdeletecart:function(){
@@ -138,8 +137,7 @@
                 }                
             },
             subtractNum:function(id){   
-              let self=this      
-              console.log(this.carlistdata, 'carlistdata')  
+              let self=this        
                 self.carlistdata.products.map(function(v,i){
                     if(v.carId == id) {
                         if(v.count==1){

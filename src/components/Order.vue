@@ -95,7 +95,13 @@
                                     </div>
                                 </div>
                             </div>                          
-                        </div>                                           
+                        </div>   
+                        <div class="cartlist-foot">
+                            <div class="label" v-if="data.stauts==0" v-on:click="cancelOrder(data.orderId)">
+                                <span class="title">取消订单</span> 
+                            </div> 
+                            <router-link :to="{name:'cartList',params:{id:data.orderId}}" class="pay-btn" v-if="data.stauts==0" > 支付</router-link>
+                        </div>                                                                 
                     </div>
                 </div>   
             </mt-tab-container-item>

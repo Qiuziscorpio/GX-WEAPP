@@ -88,9 +88,7 @@ export default {
       },   
       loadData:function(self,queryName,offset){
           self.$http.get(self.api + 'product/list.do?queryName='+queryName+'&offset='+offset).then((response) => {
-              console.log('请求成功')
               self.goodslistdata=response.data
-              console.log( response.data)
           }),(response)=>{
               console.log('请求出错')
           }

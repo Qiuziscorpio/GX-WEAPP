@@ -150,7 +150,6 @@
             selectArea:function(){
                 let self=this
                 self.$http.get(self.api+'area/find.do').then((response) => {
-                        console.log(response )
                 }),(response)=>{
                     console.log('请求出错')
                 }

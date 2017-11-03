@@ -87,8 +87,6 @@
                     street:val.street,
                     goodsName:val.goodsName
                 }
-
-                console.log(JSON.stringify(data ))
                 self.$http.post(self.api + 'address/add.do',data).then((response) => {
                     //  Toast({
                     //     message: '新增成功',
@@ -106,7 +104,6 @@
                    'addressId':id
                 }
                 
-                console.log(JSON.stringify(data ))
                 self.$http.post(self.api+'address/delect.do',data).then((response) => {
                      self.loadData(self,self.pages)
                       Toast({

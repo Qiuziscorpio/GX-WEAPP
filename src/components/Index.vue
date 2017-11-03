@@ -114,9 +114,9 @@
                  }
             },     
             loadCartData:function(self){
-                self.$http.get( self.api+'car/list.do').then((response) => {
-                    if(response.body.data.length!=0){
-                        localStorage.setItem('cartnumber',response.body.data.length)
+                self.$http.get(self.api+'car/list.do').then((response) => {
+                    if(response.body.products.length!=0){
+                        localStorage.setItem('cartnumber',response.body.products.length)
                     }
                 }),(response)=>{
                     console.log('请求出错')
@@ -124,9 +124,7 @@
             },   
             loadData:function(self){
                 self.$http.get(self.api + 'product/list.do').then((response) => {
-                    console.log('请求成功')
                     self.listdata=response.data
-                    console.log( response.data )
                 }),(response)=>{
                     console.log('请求出错')
                 }
