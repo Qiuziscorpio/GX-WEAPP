@@ -1,5 +1,5 @@
 @import 'confi.scss';
-
+@import "popup.scss";
 
 .cartlist{
     .cartlist-head{
@@ -103,5 +103,16 @@
         background: #09bb07;
         color: #fff;
         font-size: px2rem(36px);
+    }
+}
+
+.form-pay{
+    input{
+        display: none;
+    }
+    button{
+        background: none;
+        border: none;
+        box-shadow:0;
     }
 }
