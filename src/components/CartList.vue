@@ -184,7 +184,8 @@
 					transformRequest: transFn
 				};
                 self.$http.post(`${self.api}payOrder/pay.do`,data_,postCfg).then((response) => {
-                    self.payData = response.body.data                   
+                    self.payData = response.body.data          
+                    localStorage.setItem('cartnumber', '')         
 				});
             },
             isdeletecart:function(){
