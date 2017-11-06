@@ -135,7 +135,6 @@
                         'price':self.specspopupdata.price,
                         'count':self.num
                     }
-                    console.log('333')
                     self.$http.post(self.api+'car/addCar.do',data).then((response) => {
                         Toast({
                             message: '加入成功',
@@ -148,11 +147,9 @@
                         self.specspopupdata.versions.map(function(v,i){
                             v.checkbox=false
                         }) 
-                        console.log('1111')
                         self.$http.get(self.api+'car/list.do').then((response) => {
                             localStorage.setItem('cartnumber',response.body.products.length)
                             self.$router.push({name:'cartList',params:{id:'0'}})
-                            console.log('2222')
                         }),(response)=>{
                             console.log('请求出错')
                         }
@@ -192,9 +189,6 @@
                         self.specspopupdata.versions.map(function(v,i){
                             v.checkbox=false
                         }) 
-
-
-                        
                     }),(response)=>{
                         console.log('请求出错')
                     }

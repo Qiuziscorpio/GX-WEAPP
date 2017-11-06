@@ -1,7 +1,52 @@
 <template>
     <div>
         <!-- 支付弹窗  -->
-        <Vtemplate :popuptype="popuptype" v-if="ispopup" v-on:ispopup="paySelect"></Vtemplate>
+        <div class="popup">
+            <div class="popup-pay" v-if="ispopup">
+                <div class="pay-title"> 
+                选择支付方式
+                </div>
+                <div class="popup-content">
+                    <div class="popup-paycontent">
+                        <!-- <div class="pay-item active">
+                            <i class="iconfont icon-dagou"></i>
+                            银联支付
+                        </div>-->
+                        <div class="pay-item">
+                            <i class="iconfont icon-dagou mint-field-state is-success"></i>
+                            信用卡支付
+                        </div>
+                        <!--<div class="pay-item">
+                            <i class="iconfont icon-dagou"></i>
+                            其它支付
+                        </div>    -->                                    
+                    </div>
+                </div>
+                <div class="popup-foot">
+                    <div class="cancel" v-on:click="showPopup">
+                    取消
+                    </div>
+                    <div class="ok" v-on:click="paySelect">
+                        <form action="http://101.231.206.145/op.ncpkj.web/pay/frontTrans" method="post" class="form-pay">
+                            <input type="text" id="pid" name="pid" v-model="payData.pid"/>
+                            <input type="text" id="merId" name="merId" v-model="payData.merId"/>
+                            <input type="text" id="termId" name="termId" v-model="payData.termId"/> 
+                            <input type="text" id="orderId" name="orderId" v-model="payData.orderId"/>
+                            <input type="text" id="txnTime" name="txnTime" v-model="payData.txnTime"/>
+                            <input type="text" id="txnAmt" name="txnAmt" v-model="payData.txnAmt"/>
+                            <input type="text" id="isUsejf" name="isUsejf" v-model="payData.isUsejf"/>
+                            <input type="text" id="txnType" name="txnType"  v-model="payData.txnType"/>
+                            <input type="text" id="txnSubType" name="txnSubType" v-model="payData.txnSubType"/>
+                            <input type="text" id="frontUrl" name="frontUrl"  value="http://183.62.252.130/Order"/>
+                            <input type="text" id="ccyCode" name="ccyCode"  v-model="payData.isUsccyCodeejf"/>
+                            <input type="text" id="signature" name="signature"  v-model="payData.signature"/>
+                            <button type="submit">确定 </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
         <div class="flex-vertical">  
                 <div class="flex-vertical-content bg-grey2">
                     <div class="cartlist">
@@ -76,7 +121,7 @@
                     <div class="pay-btn" v-if="isAddress" style="background: #ccc;"> 
                         支付
                     </div>
-                    <div class="pay-btn" v-on:click="showPopup" v-else> 
+                    <div class="pay-btn" v-on:click="paySelect" v-else> 
                         支付
                     </div>                    
                 </div>
@@ -105,7 +150,8 @@
                 popuptype:"支付方式",
                 carlistdata:'',
                 isAddress: false,
-                addressId: ''
+                addressId: '',
+                payData: ''
             }
         },
         components:{
@@ -138,7 +184,7 @@
 					transformRequest: transFn
 				};
                 self.$http.post(`${self.api}payOrder/pay.do`,data_,postCfg).then((response) => {
-					console.log(response, 'response')
+                    self.payData = response.body.data                   
 				});
             },
             isdeletecart:function(){
