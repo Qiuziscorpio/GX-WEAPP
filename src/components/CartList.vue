@@ -38,7 +38,7 @@
                             <input type="text" id="txnType" name="txnType"  v-model="payData.txnType"/>
                             <input type="text" id="txnSubType" name="txnSubType" v-model="payData.txnSubType"/>
                             <input type="text" id="frontUrl" name="frontUrl"  value="http://183.62.252.130/Order"/>
-                            <input type="text" id="ccyCode" name="ccyCode"  v-model="payData.isUsccyCodeejf"/>
+                            <input type="text" id="ccyCode" name="ccyCode"  v-model="payData.ccyCode"/>
                             <input type="text" id="signature" name="signature"  v-model="payData.signature"/>
                             <button type="submit">确定 </button>
                         </form>
