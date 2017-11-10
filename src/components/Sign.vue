@@ -58,12 +58,16 @@ export default {
         });        
         return false 
       }        
-      this.$http.post(`${self.api}user/register.do.do`,this.userInfo).then((response) => {                     
-          if(response.code === 200) {
+      this.$http.post(`${self.api}user/register.do`,this.userInfo).then((response) => {                     
+          if(response.body.state === 'SUCCESS') {
+            Toast({
+              message: '注册成功',
+              iconClass: 'icon icon-success'
+            })            
             self.$router.go({name: 'login'})
           } else {
             Toast({
-              message: '注册失败',
+              message: response.body.message,
               iconClass: 'icon icon-success'
             })
           }

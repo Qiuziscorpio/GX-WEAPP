@@ -1,8 +1,8 @@
 <template>
     <div>
         <!-- 支付弹窗  -->
-        <div class="popup">
-            <div class="popup-pay" v-if="ispopup">
+        <div class="popup"  v-if="ispopup">
+            <div class="popup-pay">
                 <div class="pay-title"> 
                 选择支付方式
                 </div>
@@ -37,7 +37,7 @@
                             <input type="text" id="isUsejf" name="isUsejf" v-model="payData.isUsejf"/>
                             <input type="text" id="txnType" name="txnType"  v-model="payData.txnType"/>
                             <input type="text" id="txnSubType" name="txnSubType" v-model="payData.txnSubType"/>
-                            <input type="text" id="frontUrl" name="frontUrl"  value="http://183.62.252.130/Order"/>
+                            <input type="text" id="frontUrl" name="frontUrl"  value="http://183.62.252.130/order"/>
                             <input type="text" id="ccyCode" name="ccyCode"  v-model="payData.ccyCode"/>
                             <input type="text" id="signature" name="signature"  v-model="payData.signature"/>
                             <button type="submit">确定 </button>
@@ -113,22 +113,21 @@
                 </div>
                 <div class="cartlist-foot">
                     <div class="label">
-                        <span class="title">支付金额：</span>
+                        <span class="title">订单总额：</span>
                         <span class="price">
                             ¥ {{carlistdata.totalPrice}}
                         </span>
                     </div>
                     <div class="pay-btn" v-if="isAddress" style="background: #ccc;"> 
-                        支付
+                        提交订单
                     </div>
                     <div class="pay-btn" v-on:click="paySelect" v-else> 
-                        支付
+                        提交订单
                     </div>                    
                 </div>
             </div>
         </div>         
     </div>
-
 </template>
 
 <script>

@@ -8,7 +8,7 @@
             <mt-tab-item id="3">待发货／发货</mt-tab-item>
         </mt-navbar>
         <div class="bg-grey2">
-        <mt-tab-container v-model="selected">
+        <mt-tab-container v-model="selected" class="bg-grey3">
             <mt-tab-container-item id="1">
                 <div class="order-content" v-for="data in orderlistdata" key="d">
                     <div class="order-head">
@@ -21,11 +21,14 @@
                         <div class="text-blue" v-if="data.stauts==2">
                             待收货
                         </div>
-                        <div>
-                            总额：{{data.price}}
-                            订单编号：{{data.orderCode}}
-                        </div>
+                        <div class="text-blue" v-if="data.stauts==3">
+                            待收货
+                        </div>   
+                        总额：{{data.price}}                     
                     </div>
+                    <div class="bg-white">                       
+                        订单时间：{{data.orderTime}} 编号：{{data.orderCode}}
+                    </div>                    
                     <div>
                         <div class="cartlist">
                             <div class="cartlist-item" v-for="data2 in data.products" key="d">
@@ -48,7 +51,7 @@
                                 </div>
                             </div>                          
                         </div>  
-                        <div class="cartlist-foot">
+                        <div class="cartlist-foot" v-if="data.stauts==0">
                             <div class="label" v-if="data.stauts==0" v-on:click="cancelOrder(data.orderId)">
                                 <span class="title">取消订单</span> 
                             </div> 

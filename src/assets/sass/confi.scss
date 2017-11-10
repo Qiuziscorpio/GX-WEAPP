@@ -25,6 +25,7 @@ a{
 $theme:#565656;
 $grey1:#8c8c8c;
 $grey2:#f4f4f4;
+$white:#fff;
 $yellow:#ffb71b;
 $blue:#0ac7fd;
 $green:#74ce3b;
@@ -168,6 +169,12 @@ $rose:#e4195b;
 }
 .bg-grey2{
     background: $grey2;
+}
+.bg-grey3{
+    background: $grey2;
+}
+.bg-white{
+    background: $white;
 }
 
 .text-yellow{

@@ -149,7 +149,6 @@
                         }) 
                         self.$http.get(self.api+'car/list.do').then((response) => {
                             localStorage.setItem('cartnumber',response.body.products.length)
-                            self.$router.push({name:'cartList',params:{id:'0'}})
                         }),(response)=>{
                             console.log('请求出错')
                         }
@@ -161,7 +160,10 @@
             },
             buyGoods:function(){
                 let self=this
-
+                var isLogin = Boolean(localStorage.getItem('userInfo'))
+                if (!isLogin) {
+                     self.$router.push({name:'login'})
+                }
                 if(self.colorsarr.length==0||self.versionsarr.length==0){
                       Toast({
                         message: '请选择规格',
@@ -189,6 +191,7 @@
                         self.specspopupdata.versions.map(function(v,i){
                             v.checkbox=false
                         }) 
+                        self.$router.push({name:'cartList',params:{id:'0'}})
                     }),(response)=>{
                         console.log('请求出错')
                     }

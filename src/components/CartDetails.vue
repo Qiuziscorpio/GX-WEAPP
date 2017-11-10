@@ -30,9 +30,9 @@
             <div class="buy-btn" v-on:click="isspecspopup"> 
                 我要购买
             </div>
-            <div class="link-btn">
+            <!--<div class="link-btn">
                 联系客服
-            </div>            
+            </div>-->   
         </div>
     </div>
 

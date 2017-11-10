@@ -122,19 +122,20 @@ const router = new Router({
 //全局监听路由 登录授权 
 router.beforeEach(({meta,path}, from, next) => {
   var isLogin = Boolean(localStorage.getItem('userInfo'))
-	if (meta && !isLogin && path !== '/login' && path !== '/sign') {
-		next({ path: '/login' })
-	} else {
-		if (isLogin) {
-			if (path == '/login' || path == '/sign') {	
-				next({ path: '/' })
-			} else {
-        next()
-      }    
-    } else {
-      next()
-    }
-  }
+  next()
+	// if (meta && !isLogin && path !== '/login' && path !== '/sign') {
+	// 	next({ path: '/login' })
+	// } else {
+	// 	if (isLogin) {
+	// 		if (path == '/login' || path == '/sign') {	
+	// 			next({ path: '/' })
+	// 		} else {
+  //       next()
+  //     }    
+  //   } else {
+  //     next()
+  //   }
+  // }
 })
 
 export default router
