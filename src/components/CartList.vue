@@ -40,7 +40,7 @@
                             <input type="text" id="frontUrl" name="frontUrl"  value="http://183.62.252.130/order"/>
                             <input type="text" id="ccyCode" name="ccyCode"  v-model="payData.ccyCode"/>
                             <input type="text" id="signature" name="signature"  v-model="payData.signature"/>
-                            <button type="submit">确定 </button>
+                            <button type="submit"> 确定 </button>
                         </form>
                     </div>
                 </div>
@@ -168,6 +168,7 @@
 					products[i].price = products[i].price*100;
 					products[i].pager = {};
 				}
+                console.log('ppp')
                 self.ispopup=!self.ispopup                
 				let data_ = {
 					'products': this.carlistdata.products,
